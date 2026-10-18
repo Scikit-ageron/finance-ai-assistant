@@ -43,6 +43,18 @@ def test_loop_runs_tool_and_returns_answer():
     assert "operating_result" in tool_result["content"]
 
 
+def test_commentary_runs_in_its_own_conversation():
+    messages = FakeMessages()
+    assistant = FinanceAssistant(analysis.load_data(), client=NS(beta=NS(messages=messages)))
+
+    answer = assistant.monthly_commentary("2026-08", language="Spanish")
+
+    assert answer.text == "August missed the budget."
+    assert assistant.history == []  # the chat is untouched
+    prompt = messages.calls[0]["messages"][0]["content"]
+    assert "2026-08" in prompt and "Spanish" in prompt
+
+
 def test_refusal_is_handled():
     messages = FakeMessages()
     messages.responses = [NS(stop_reason="refusal", usage=NS(input_tokens=10, output_tokens=0), content=[])]

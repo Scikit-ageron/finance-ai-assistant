@@ -26,13 +26,17 @@ MAX_TOOL_ROUNDS = 8
 # USD per million tokens (input, output), to show the cost of each question.
 PRICES = {"claude-opus-5": (5.00, 25.00), "claude-sonnet-5": (2.00, 10.00), "claude-haiku-4-5": (1.00, 5.00)}
 
-SYSTEM_PROMPT = """You are a financial planning and analysis (FP&A) assistant for Northwind Bikes, \
-a fictitious company. You answer questions about its 2026 budget vs. actual figures.
+SYSTEM_PROMPT = """You are a financial planning and analysis (FP&A) assistant. You answer questions \
+about the budget vs. actual figures in the loaded dataset (the demo dataset is Northwind Bikes, \
+a fictitious company).
 
 Rules:
 - Get every number from the tools. Never estimate or invent figures.
 - Call list_dimensions first if you are not sure about the exact month, department or account names.
+- Months without actuals are open. Variance tools only use closed months; say which months a figure covers.
 - Variance = actual - budget. Use the "favourable" field to say if a variance is good or bad.
+- For full-year questions use full_year_forecast and say which method you used. "run_rate" also \
+extrapolates one-off deviations, so point those out.
 - Lead with the answer, then the key figures, then the likely driver if the data shows one.
 - Keep it short and clear, for a finance manager. Use euros, with thousands separators.
 - Answer in the same language as the question."""
@@ -99,6 +103,32 @@ TOOLS = [
         "strict": True,
     },
     {
+        "name": "full_year_forecast",
+        "description": (
+            "Full-year landing: actual to date plus a forecast for the open months, vs. the full-year budget. "
+            "method 'budget' assumes open months hit budget; 'run_rate' keeps each line's year-to-date "
+            "actual/budget ratio."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "group_by": {
+                    "type": "array",
+                    "items": {"type": "string", "enum": ["department", "account"]},
+                    "description": "Columns to group by, or [] for totals by income/expense.",
+                },
+                "method": {"type": "string", "enum": ["run_rate", "budget"]},
+                "as_of": {
+                    "type": ["string", "null"],
+                    "description": "Last closed month as YYYY-MM, or null for the latest month with actuals.",
+                },
+            },
+            "required": ["group_by", "method", "as_of"],
+            "additionalProperties": False,
+        },
+        "strict": True,
+    },
+    {
         "name": "pl_summary",
         "description": "Total revenue, expenses and operating result (budget vs. actual) for a period.",
         "input_schema": {
@@ -110,6 +140,23 @@ TOOLS = [
         "strict": True,
     },
 ]
+
+
+COMMENTARY_PROMPT = """Write the monthly variance commentary for {month} for the management report.
+Get the figures with the tools: the month, the year to date up to {month}, the biggest deviations \
+and the full-year landing (run_rate method, as of {month}).
+
+Format it in Markdown, under 300 words, with these sections:
+### Headline
+One sentence: how the month went and what matters most.
+### {month}
+Operating result vs. budget and the three main drivers, with figures.
+### Year to date
+Where we stand, and whether the month's issues are one-offs or a trend.
+### Full-year outlook
+Expected landing vs. budget, the main risks, and one-off effects the run rate may overstate.
+
+Write it in {language}, for a finance director. Do not ask questions; write the commentary."""
 
 
 @dataclass
@@ -139,6 +186,8 @@ def run_tool(df: pd.DataFrame, name: str, args: dict):
         return analysis.monthly_trend(df, **args)
     if name == "pl_summary":
         return analysis.pl_summary(df, **args)
+    if name == "full_year_forecast":
+        return analysis.full_year_forecast(df, **args)
     raise ValueError(f"Unknown tool: {name}")
 
 
@@ -152,7 +201,17 @@ class FinanceAssistant:
         self.effort = os.environ.get("FINANCE_ASSISTANT_EFFORT", DEFAULT_EFFORT)
 
     def ask(self, question: str) -> Answer:
+        """Chat: the question joins the conversation, so follow-ups work."""
         self.history.append({"role": "user", "content": question})
+        return self._run(self.history)
+
+    def monthly_commentary(self, month: str, language: str = "English") -> Answer:
+        """A one-off report in its own conversation, so it does not mix with the chat."""
+        prompt = COMMENTARY_PROMPT.format(month=month, language=language)
+        return self._run([{"role": "user", "content": prompt}])
+
+    def _run(self, history: list[dict]) -> Answer:
+        """The tool-use loop. Appends every turn to `history`."""
         answer = Answer(text="", model=self.model)
 
         for _ in range(MAX_TOOL_ROUNDS):
@@ -161,7 +220,7 @@ class FinanceAssistant:
                 max_tokens=16000,
                 system=SYSTEM_PROMPT,
                 tools=TOOLS,
-                messages=self.history,
+                messages=history,
                 thinking={"type": "adaptive"},
                 output_config={"effort": self.effort},
                 cache_control={"type": "ephemeral"},  # reuse the prompt between rounds -> cheaper
@@ -172,7 +231,7 @@ class FinanceAssistant:
             answer.input_tokens += response.usage.input_tokens
             answer.output_tokens += response.usage.output_tokens
             # Keep the full content (thinking + tool calls), not only the text.
-            self.history.append({"role": "assistant", "content": response.content})
+            history.append({"role": "assistant", "content": response.content})
 
             if response.stop_reason == "refusal":
                 answer.text = "The model declined to answer this question."
@@ -205,7 +264,7 @@ class FinanceAssistant:
                         "content": f"Error: {exc}",
                         "is_error": True,
                     })
-            self.history.append({"role": "user", "content": results})
+            history.append({"role": "user", "content": results})
 
         answer.text = "I could not finish the analysis in a reasonable number of steps. Try a narrower question."
         return answer

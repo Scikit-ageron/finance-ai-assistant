@@ -13,6 +13,7 @@ import pandas as pd
 
 SEED = 42  # fixed seed -> the same CSV every time (like srand(42) in C)
 YEAR = 2026
+CLOSED_THROUGH = 9  # actuals up to September; October-December are still open (budget only)
 OUTPUT = Path(__file__).with_name("budget_vs_actual.csv")
 
 # Monthly budget per (department, account), in euros.
@@ -45,8 +46,7 @@ PLANTED = {
     (9, "IT", "Software licenses"): 1.50,
     (8, "Sales", "Revenue"): 0.78,             # weak August: a big client delayed orders
     (8, "Operations", "Cost of goods"): 0.82,  # less revenue -> less cost of goods
-    (10, "Operations", "Logistics"): 1.35,     # fuel price increase
-    (11, "Operations", "Logistics"): 1.30,
+    (9, "Operations", "Logistics"): 1.35,      # fuel price increase
 }
 
 SEASONAL_ACCOUNTS = {"Revenue", "Cost of goods"}
@@ -58,7 +58,9 @@ def build_dataset() -> pd.DataFrame:
     for month in range(1, 13):
         for (department, account), base in BUDGET.items():
             budget = base * (SEASONALITY[month - 1] if account in SEASONAL_ACCOUNTS else 1.0)
+            # The random draw happens for every line, so the closed months stay the same numbers.
             ratio = PLANTED.get((month, department, account), rng.normal(1.0, 0.03))
+            actual = round(budget * ratio, 2) if month <= CLOSED_THROUGH else None
             rows.append(
                 {
                     "month": f"{YEAR}-{month:02d}",
@@ -66,7 +68,7 @@ def build_dataset() -> pd.DataFrame:
                     "account": account,
                     "type": "income" if account == "Revenue" else "expense",
                     "budget": round(budget, 2),
-                    "actual": round(budget * ratio, 2),
+                    "actual": actual,
                 }
             )
     return pd.DataFrame(rows)
