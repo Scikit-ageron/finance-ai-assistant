@@ -1,0 +1,169 @@
+month,department,account,type,budget,actual
+2026-01,Sales,Revenue,income,1680000.0,1695357.74
+2026-01,Sales,Personnel,expense,180000.0,174384.09
+2026-01,Sales,Travel,expense,25000.0,25562.84
+2026-01,Marketing,Campaigns,expense,90000.0,92539.52
+2026-01,Marketing,Personnel,expense,70000.0,65902.83
+2026-01,Operations,Cost of goods,expense,512000.0,491998.52
+2026-01,Operations,Logistics,expense,85000.0,85325.99
+2026-01,Operations,Personnel,expense,210000.0,208007.67
+2026-01,IT,Software licenses,expense,40000.0,39979.84
+2026-01,IT,Personnel,expense,95000.0,92568.82
+2026-01,HR,Personnel,expense,45000.0,46187.19
+2026-01,HR,Training,expense,12000.0,12280.01
+2026-01,Finance,Personnel,expense,60000.0,60118.86
+2026-01,Finance,Consulting,expense,15000.0,15507.26
+2026-02,Sales,Revenue,income,1785000.0,1810035.13
+2026-02,Sales,Personnel,expense,180000.0,175359.82
+2026-02,Sales,Travel,expense,25000.0,25276.56
+2026-02,Marketing,Campaigns,expense,90000.0,87411.02
+2026-02,Marketing,Personnel,expense,70000.0,71844.75
+2026-02,Operations,Cost of goods,expense,544000.0,543185.21
+2026-02,Operations,Logistics,expense,85000.0,84528.6
+2026-02,Operations,Personnel,expense,210000.0,205710.14
+2026-02,IT,Software licenses,expense,40000.0,41467.05
+2026-02,IT,Personnel,expense,95000.0,94559.59
+2026-02,HR,Personnel,expense,45000.0,44421.76
+2026-02,HR,Training,expense,12000.0,11873.23
+2026-02,Finance,Personnel,expense,60000.0,60958.16
+2026-02,Finance,Consulting,expense,15000.0,15164.45
+2026-03,Sales,Revenue,income,2100000.0,2126002.15
+2026-03,Sales,Personnel,expense,180000.0,182326.43
+2026-03,Sales,Travel,expense,25000.0,26606.24
+2026-03,Marketing,Campaigns,expense,90000.0,130500.0
+2026-03,Marketing,Personnel,expense,70000.0,68924.29
+2026-03,Operations,Cost of goods,expense,640000.0,624375.56
+2026-03,Operations,Logistics,expense,85000.0,86570.75
+2026-03,Operations,Personnel,expense,210000.0,217112.53
+2026-03,IT,Software licenses,expense,40000.0,39863.26
+2026-03,IT,Personnel,expense,95000.0,92605.55
+2026-03,HR,Personnel,expense,45000.0,43886.95
+2026-03,HR,Training,expense,12000.0,12234.21
+2026-03,Finance,Personnel,expense,60000.0,61337.86
+2026-03,Finance,Consulting,expense,15000.0,15244.42
+2026-04,Sales,Revenue,income,2310000.0,2263880.18
+2026-04,Sales,Personnel,expense,180000.0,181253.67
+2026-04,Sales,Travel,expense,25000.0,25087.51
+2026-04,Marketing,Campaigns,expense,90000.0,90590.46
+2026-04,Marketing,Personnel,expense,70000.0,71830.0
+2026-04,Operations,Cost of goods,expense,704000.0,708722.34
+2026-04,Operations,Logistics,expense,85000.0,86731.23
+2026-04,Operations,Personnel,expense,210000.0,210425.75
+2026-04,IT,Software licenses,expense,40000.0,40346.94
+2026-04,IT,Personnel,expense,95000.0,96799.17
+2026-04,HR,Personnel,expense,45000.0,43032.84
+2026-04,HR,Training,expense,12000.0,11884.92
+2026-04,Finance,Personnel,expense,60000.0,59153.33
+2026-04,Finance,Consulting,expense,15000.0,14712.5
+2026-05,Sales,Revenue,income,2520000.0,2499199.25
+2026-05,Sales,Personnel,expense,180000.0,188072.68
+2026-05,Sales,Travel,expense,25000.0,24350.63
+2026-05,Marketing,Campaigns,expense,90000.0,92614.35
+2026-05,Marketing,Personnel,expense,70000.0,66465.97
+2026-05,Operations,Cost of goods,expense,768000.0,760284.25
+2026-05,Operations,Logistics,expense,85000.0,85415.02
+2026-05,Operations,Personnel,expense,210000.0,213693.2
+2026-05,IT,Software licenses,expense,40000.0,40853.47
+2026-05,IT,Personnel,expense,95000.0,97261.04
+2026-05,HR,Personnel,expense,45000.0,44529.22
+2026-05,HR,Training,expense,12000.0,11833.55
+2026-05,Finance,Personnel,expense,60000.0,61544.36
+2026-05,Finance,Consulting,expense,15000.0,14913.91
+2026-06,Sales,Revenue,income,2625000.0,2524539.7
+2026-06,Sales,Personnel,expense,180000.0,173880.25
+2026-06,Sales,Travel,expense,25000.0,24310.41
+2026-06,Marketing,Campaigns,expense,90000.0,91342.33
+2026-06,Marketing,Personnel,expense,70000.0,70299.09
+2026-06,Operations,Cost of goods,expense,800000.0,816571.65
+2026-06,Operations,Logistics,expense,85000.0,83910.51
+2026-06,Operations,Personnel,expense,210000.0,210998.8
+2026-06,IT,Software licenses,expense,40000.0,40750.71
+2026-06,IT,Personnel,expense,95000.0,94118.36
+2026-06,HR,Personnel,expense,45000.0,45616.65
+2026-06,HR,Training,expense,12000.0,11761.71
+2026-06,Finance,Personnel,expense,60000.0,59346.5
+2026-06,Finance,Consulting,expense,15000.0,14828.22
+2026-07,Sales,Revenue,income,2415000.0,2328361.42
+2026-07,Sales,Personnel,expense,180000.0,182629.65
+2026-07,Sales,Travel,expense,25000.0,24647.95
+2026-07,Marketing,Campaigns,expense,90000.0,90033.73
+2026-07,Marketing,Personnel,expense,70000.0,71009.57
+2026-07,Operations,Cost of goods,expense,736000.0,745859.41
+2026-07,Operations,Logistics,expense,85000.0,86696.73
+2026-07,Operations,Personnel,expense,210000.0,209379.54
+2026-07,IT,Software licenses,expense,40000.0,64000.0
+2026-07,IT,Personnel,expense,95000.0,94772.8
+2026-07,HR,Personnel,expense,45000.0,42722.1
+2026-07,HR,Training,expense,12000.0,11479.04
+2026-07,Finance,Personnel,expense,60000.0,57619.14
+2026-07,Finance,Consulting,expense,15000.0,14551.24
+2026-08,Sales,Revenue,income,1890000.0,1474200.0
+2026-08,Sales,Personnel,expense,180000.0,175110.41
+2026-08,Sales,Travel,expense,25000.0,24716.38
+2026-08,Marketing,Campaigns,expense,90000.0,93507.92
+2026-08,Marketing,Personnel,expense,70000.0,69251.85
+2026-08,Operations,Cost of goods,expense,576000.0,472320.0
+2026-08,Operations,Logistics,expense,85000.0,82619.27
+2026-08,Operations,Personnel,expense,210000.0,208705.74
+2026-08,IT,Software licenses,expense,40000.0,62000.0
+2026-08,IT,Personnel,expense,95000.0,94033.76
+2026-08,HR,Personnel,expense,45000.0,46134.42
+2026-08,HR,Training,expense,12000.0,11378.16
+2026-08,Finance,Personnel,expense,60000.0,60781.96
+2026-08,Finance,Consulting,expense,15000.0,15106.98
+2026-09,Sales,Revenue,income,2100000.0,2062568.55
+2026-09,Sales,Personnel,expense,180000.0,172191.29
+2026-09,Sales,Travel,expense,25000.0,25054.1
+2026-09,Marketing,Campaigns,expense,90000.0,88570.37
+2026-09,Marketing,Personnel,expense,70000.0,70488.62
+2026-09,Operations,Cost of goods,expense,640000.0,640419.56
+2026-09,Operations,Logistics,expense,85000.0,89084.54
+2026-09,Operations,Personnel,expense,210000.0,208492.06
+2026-09,IT,Software licenses,expense,40000.0,60000.0
+2026-09,IT,Personnel,expense,95000.0,95510.94
+2026-09,HR,Personnel,expense,45000.0,45297.0
+2026-09,HR,Training,expense,12000.0,12489.31
+2026-09,Finance,Personnel,expense,60000.0,61503.2
+2026-09,Finance,Consulting,expense,15000.0,15160.59
+2026-10,Sales,Revenue,income,2100000.0,2192188.08
+2026-10,Sales,Personnel,expense,180000.0,173580.68
+2026-10,Sales,Travel,expense,25000.0,24520.19
+2026-10,Marketing,Campaigns,expense,90000.0,87498.24
+2026-10,Marketing,Personnel,expense,70000.0,69181.4
+2026-10,Operations,Cost of goods,expense,640000.0,613567.63
+2026-10,Operations,Logistics,expense,85000.0,114750.0
+2026-10,Operations,Personnel,expense,210000.0,208600.0
+2026-10,IT,Software licenses,expense,40000.0,38235.03
+2026-10,IT,Personnel,expense,95000.0,92105.6
+2026-10,HR,Personnel,expense,45000.0,45423.24
+2026-10,HR,Training,expense,12000.0,12301.73
+2026-10,Finance,Personnel,expense,60000.0,63594.12
+2026-10,Finance,Consulting,expense,15000.0,16311.24
+2026-11,Sales,Revenue,income,1890000.0,1913497.01
+2026-11,Sales,Personnel,expense,180000.0,174656.49
+2026-11,Sales,Travel,expense,25000.0,23400.97
+2026-11,Marketing,Campaigns,expense,90000.0,90722.82
+2026-11,Marketing,Personnel,expense,70000.0,68292.82
+2026-11,Operations,Cost of goods,expense,576000.0,568822.63
+2026-11,Operations,Logistics,expense,85000.0,110500.0
+2026-11,Operations,Personnel,expense,210000.0,209113.02
+2026-11,IT,Software licenses,expense,40000.0,41279.18
+2026-11,IT,Personnel,expense,95000.0,95447.59
+2026-11,HR,Personnel,expense,45000.0,44785.84
+2026-11,HR,Training,expense,12000.0,11627.16
+2026-11,Finance,Personnel,expense,60000.0,56985.57
+2026-11,Finance,Consulting,expense,15000.0,14781.16
+2026-12,Sales,Revenue,income,1785000.0,1782119.94
+2026-12,Sales,Personnel,expense,180000.0,189546.82
+2026-12,Sales,Travel,expense,25000.0,25097.71
+2026-12,Marketing,Campaigns,expense,90000.0,92653.4
+2026-12,Marketing,Personnel,expense,70000.0,68951.48
+2026-12,Operations,Cost of goods,expense,544000.0,524661.72
+2026-12,Operations,Logistics,expense,85000.0,82538.95
+2026-12,Operations,Personnel,expense,210000.0,205431.08
+2026-12,IT,Software licenses,expense,40000.0,42554.16
+2026-12,IT,Personnel,expense,95000.0,92659.05
+2026-12,HR,Personnel,expense,45000.0,46131.96
+2026-12,HR,Training,expense,12000.0,11674.95
+2026-12,Finance,Personnel,expense,60000.0,61676.83
+2026-12,Finance,Consulting,expense,15000.0,15173.23
