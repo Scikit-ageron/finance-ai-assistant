@@ -7,7 +7,7 @@ Load your own planning export, see where the year will land, and get the monthly
 >
 > → *Operating result in August was €328k below budget. The main driver is revenue: €416k (-22%) under budget in Sales…*
 
-![Finance AI Assistant answering a question about August](docs/screenshot.jpg)
+![Finance AI Assistant: year-to-date dashboard, full-year landing and the September variance commentary](docs/screenshot.jpg)
 
 Built with **Python, pandas and the Claude API**. The company (Northwind Bikes) and all figures are fictitious.
 
